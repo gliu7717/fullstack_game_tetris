@@ -10,6 +10,8 @@ const yoffset = 79
 
 function App() {
   const [blocks, setBlocks] = useState([])
+  const [fields, setFields] = useState([])
+
   useEffect(() => {
     setBlocks(createBlocks())    
   }, [])
@@ -45,6 +47,9 @@ function App() {
       });
     }
     else{
+      let newfields = fields.concat(blocks)
+      setFields(newfields)
+
       let newBlock = createBlocks()      
       setBlocks(newBlock)
     }
@@ -59,13 +64,25 @@ function App() {
     const timer = setInterval(() => {
       setBlocks([...blocks])
       tickMove()
-    }, 1000)
+    }, 300)
     return () => clearInterval(timer)
   }, [blocks])
 
   return (
     <div className="App">
       <div className="bg">
+        {fields.map((block,index) => (
+            <img 
+              className={block.cname}
+              key = {index}
+              src={block.image}
+              style={{backgroundColor:block.color, width: block.width*width, height: block.height*width, position: 'absolute', 
+              top: block.positionY * width + yoffset, left: block.positionX * width + xoffset}}
+              alt={block.name}
+              data-id={block.id   }
+             />
+        ))}
+
         {blocks.map((block,index) => (
           <img 
             className={block.cname}
