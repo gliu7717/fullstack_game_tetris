@@ -20,6 +20,10 @@ function App() {
         block.positionY ++
       });
     }
+    else{
+      let newBlock = createBlocks()      
+      setBlocks(newBlock)
+    }
   }
 
   useEffect(() => {
