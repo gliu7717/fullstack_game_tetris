@@ -13,6 +13,24 @@ function App() {
     setBlocks(createBlocks())    
   }, [])
 
+  const keyPress = (e) => {
+    let dx = 0
+    let canMove = false
+    if (e.key === 'ArrowLeft') {
+      canMove = validateMove(blocks,-1, 0)
+      dx = -1
+    } else if (e.key === 'ArrowRight') {
+      canMove = validateMove(blocks,1, 0)
+      dx = 1
+    }
+    if( canMove ){
+      blocks.forEach(function(block){
+        block.positionX += dx 
+      })
+      setBlocks([...blocks])
+    }
+  }
+
   const tickMove = () => {
     let canMove = validateMove(blocks, 0, 1)
     if(canMove){
@@ -27,10 +45,15 @@ function App() {
   }
 
   useEffect(() => {
+    document.addEventListener("keydown", keyPress);
+    return () => document.removeEventListener("keydown", keyPress);
+  });
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setBlocks([...blocks])
       tickMove()
-    }, 200)
+    }, 1000)
     return () => clearInterval(timer)
   }, [blocks])
 
@@ -52,7 +75,6 @@ function App() {
             data-id={block.id}
           />
         ))}
-
       </div>
       <br/> <br/>
       ~score~
