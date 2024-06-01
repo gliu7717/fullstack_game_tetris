@@ -2,6 +2,7 @@ import './index.css';
 import { useEffect, useState } from "react"
 import { createBlocks } from './createBlocks';
 import { validateMove } from './validMove';
+import { rotateBlocks } from './rotateBlocks';
 
 const width = 18
 const xoffset = 76
@@ -23,6 +24,11 @@ function App() {
       canMove = validateMove(blocks,1, 0)
       dx = 1
     }
+    else if (e.key === 'ArrowUp') {
+      rotateBlocks(blocks)
+      setBlocks([...blocks])
+    }
+
     if( canMove ){
       blocks.forEach(function(block){
         block.positionX += dx 
