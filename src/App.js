@@ -27,7 +27,7 @@ function App() {
       dx = 1
     }
     else if (e.key === 'ArrowUp') {
-      rotateBlocks(blocks)
+      rotateBlocks(blocks,fields)
       setBlocks([...blocks])
     }
 

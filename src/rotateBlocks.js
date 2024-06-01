@@ -1,6 +1,6 @@
 const tetris_height = 20
 const tetris_width = 10
-export const rotateBlocks = (blocks) =>
+export const rotateBlocks = (blocks, fields) =>
 {
     let x = blocks[1].positionX
     let y = blocks[1].positionY
@@ -12,6 +12,10 @@ export const rotateBlocks = (blocks) =>
         newy = y + newy
         if(newx < 0 || newx >= tetris_width || newy>= tetris_height)
             canRotate = false
+        fields.forEach(function(field){
+            if( newx === field.positionX && newy === field.positionY) 
+            canRotate = false
+        })        
     })
     if(canRotate)
     {
