@@ -1,5 +1,4 @@
-const tetris_height = 20
-const tetris_width = 10
+import { tetris_width} from './tetrisConst';
 export const resolveFields = (blocks, fields) =>
 {
     const yset = new Set();

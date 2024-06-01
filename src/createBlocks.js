@@ -5,7 +5,8 @@ import orangeBlock from './images/orange_block.png'
 import greenBlock from './images/green_block.png'
 import purpleBlock from './images/purple-block.png'
 import lightBlueBlock from './images/light_blue_block.png'
-const offset =4
+import { blockInitOffset } from './tetrisConst';
+
 const figures = [
   [1,3,5,7], // I
   [0,2,3,5], // Z
@@ -33,7 +34,7 @@ export const createBlocks = () =>{
     const block = {
       id : i+1,
       image: bricks[randamFigureId],
-      positionX: figures[randamFigureId][i] % 2 + offset,
+      positionX: figures[randamFigureId][i] % 2 + blockInitOffset,
       positionY: Math.floor(figures[randamFigureId][i] / 2),
       width : 1,
       height :1

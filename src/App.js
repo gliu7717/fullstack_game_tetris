@@ -4,10 +4,8 @@ import { createBlocks } from './createBlocks';
 import { validateMove } from './validMove';
 import { rotateBlocks } from './rotateBlocks';
 import { resolveFields } from './resolveFields';
+import { width,yoffset,xoffset } from './tetrisConst';
 
-const width = 18
-const xoffset = 76
-const yoffset = 79
 
 function App() {
   const [blocks, setBlocks] = useState([])
