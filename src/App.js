@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { createBlocks } from './createBlocks';
 import { validateMove } from './validMove';
 import { rotateBlocks } from './rotateBlocks';
+import { resolveFields } from './resolveFields';
 
 const width = 18
 const xoffset = 76
@@ -48,8 +49,8 @@ function App() {
     }
     else{
       let newfields = fields.concat(blocks)
-      setFields(newfields)
-
+      let newfields1 = resolveFields(blocks, newfields)
+      setFields(newfields1)
       let newBlock = createBlocks()      
       setBlocks(newBlock)
     }
