@@ -20,10 +20,10 @@ function App() {
     let dx = 0
     let canMove = false
     if (e.key === 'ArrowLeft') {
-      canMove = validateMove(blocks,-1, 0)
+      canMove = validateMove(blocks,fields,-1, 0)
       dx = -1
     } else if (e.key === 'ArrowRight') {
-      canMove = validateMove(blocks,1, 0)
+      canMove = validateMove(blocks,fields,1, 0)
       dx = 1
     }
     else if (e.key === 'ArrowUp') {
@@ -40,7 +40,7 @@ function App() {
   }
 
   const tickMove = () => {
-    let canMove = validateMove(blocks, 0, 1)
+    let canMove = validateMove(blocks,fields, 0, 1)
     if(canMove){
       blocks.forEach(function(block) {
         block.positionY ++
