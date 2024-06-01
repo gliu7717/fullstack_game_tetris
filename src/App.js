@@ -1,6 +1,7 @@
 import './index.css';
 import { useEffect, useState } from "react"
 import { createBlocks } from './createBlocks';
+import { validateMove } from './validMove';
 
 const width = 18
 const xoffset = 76
@@ -11,6 +12,23 @@ function App() {
   useEffect(() => {
     setBlocks(createBlocks())    
   }, [])
+
+  const tickMove = () => {
+    let canMove = validateMove(blocks, 0, 1)
+    if(canMove){
+      blocks.forEach(function(block) {
+        block.positionY ++
+      });
+    }
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBlocks([...blocks])
+      tickMove()
+    }, 200)
+    return () => clearInterval(timer)
+  }, [blocks])
 
   return (
     <div className="App">
