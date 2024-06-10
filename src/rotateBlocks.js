@@ -2,6 +2,10 @@ import { tetris_width, tetris_height} from './tetrisConst';
 
 export const rotateBlocks = (blocks, fields) =>
 {
+    console.log(blocks)
+    if(blocks === null || blocks.length ===0)
+        return
+
     let x = blocks[1].positionX
     let y = blocks[1].positionY
     let canRotate = true

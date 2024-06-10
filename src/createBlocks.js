@@ -17,6 +17,17 @@ const figures = [
   [0,1,2,3], // O
 ];
 
+const figures5 = [
+  [1,3,5,7,6], // I
+  [0,2,3,5,4], // Z
+  [1,3,2,4,0], // S
+  [1,3,2,5,7], // T
+  [0,1,3,5,4], // L
+  [1,3,5,4,6], // J
+  [0,1,2,3,5], // O
+];
+
+
 const bricks = [
   blueBlock,
   redBlock,
@@ -30,12 +41,12 @@ const bricks = [
 export const createBlocks = () =>{
   const blocks = []
   const randamFigureId = Math.floor(Math.random() * 7);
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     const block = {
       id : i+1,
       image: bricks[randamFigureId],
-      positionX: figures[randamFigureId][i] % 2 + blockInitOffset,
-      positionY: Math.floor(figures[randamFigureId][i] / 2),
+      positionX: figures5[randamFigureId][i] % 2 + blockInitOffset,
+      positionY: Math.floor(figures5[randamFigureId][i] / 2),
       width : 1,
       height :1
     }

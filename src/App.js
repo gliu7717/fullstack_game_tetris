@@ -57,7 +57,7 @@ function App() {
   useEffect(() => {
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
-  });
+  },[blocks]);
 
   useEffect(() => {
     const timer = setInterval(() => {
